@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Tb Role</span>
+                            <span class="card-title"><strong>Informacion del Rol</strong></span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('tb-roles.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('tb-roles.index') }}"> Atrás</a>
                         </div>
                     </div>
 

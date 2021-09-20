@@ -21,16 +21,16 @@ class TbUsuarioController extends Controller
      */
     public function index()
     {
-        //$tbUsuarios = TbUsuario::paginate(10);
-        $tbUsuarios = DB::table('tb_usuarios')->where('estado', '=', 1)->get();
-        $perPage = 20;
+        $tbUsuarios = TbUsuario::paginate(10);
+        //$tbUsuarios = DB::table('tb_usuarios')->where('estado', '=', 1)->get();
+        //$perPage = 20;
 
         //datos eps y roles
         $eps = DB::table('tb_eps')->where('estado', '=', 1)->get();
         $roles = DB::table('tb_roles')->where('estado', '=', 1)->get();
 
         return view('tb-usuario.index', compact('tbUsuarios','eps','roles'))
-            ->with('i', (request()->input('page', 1) - 1) * 20);
+            ->with('i', (request()->input('page', 1) - 1) * $tbUsuarios->perPage());
     }
 
     /**
@@ -96,7 +96,21 @@ class TbUsuarioController extends Controller
     {
         $tbUsuario = TbUsuario::find($id);
 
-        return view('tb-usuario.show', compact('tbUsuario'));
+        $eps = DB::table('tb_eps')->where('estado', '=', 1)->get();
+        foreach($eps as $item){
+            if($tbUsuario->eps_id == $item->id){
+                $nombreeps = $item->nombre;
+            }
+        }
+
+        $roles = DB::table('tb_roles')->where('estado', '=', 1)->get();
+        foreach($roles as $item){
+            if($tbUsuario->rol_id == $item->id){
+                $nombrerol = $item->nombre;
+            }
+        }
+
+        return view('tb-usuario.show', compact('tbUsuario','nombreeps','nombrerol'));
     }
 
     /**

@@ -116,6 +116,6 @@ class TbEpController extends Controller
         $tbEp = TbEp::find($id)->delete();
 
         return redirect()->route('tb-eps.index')
-            ->with('success', 'TbEp deleted successfully');
+            ->with('success', 'EPS eliminada con éxito.');
     }
 }

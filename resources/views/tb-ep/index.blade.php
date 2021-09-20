@@ -35,9 +35,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Nombre</th>
-										<th>Estado</th>
+										<th>Acciones</th>
 
                                         <th></th>
                                     </tr>
@@ -46,17 +45,16 @@
                                     @foreach ($tbEps as $tbEp)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
 											<td>{{ $tbEp->nombre }}</td>
-											<td>{{ $tbEp->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('tb-eps.destroy',$tbEp->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-eps.show',$tbEp->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-eps.edit',$tbEp->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-eps.show',$tbEp->id) }}" title="Ver más información"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-eps.edit',$tbEp->id) }}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar la EPS: {{ $tbEp->nombre }} ?');" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+                                                    {{--  <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>  --}}
                                                 </form>
                                             </td>
                                         </tr>

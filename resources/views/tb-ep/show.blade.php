@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Tb Ep</span>
+                            <span class="card-title"><strong>Informacion de la EPS</strong></span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('tb-eps.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('tb-eps.index') }}"> Atrás</a>
                         </div>
                     </div>
 

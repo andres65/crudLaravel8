@@ -7,7 +7,8 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
-        @if(isset($tbRole->estado))
+        <input class="form-control" type="hidden" id="estado" name="estado" value="1">
+        {{--  @if(isset($tbRole->estado))
             <div class="form-group">
                 {{ Form::label('estado') }}
                 <select class="form-control" name="estado" id="estado">
@@ -20,10 +21,10 @@
                     @endif
                 </select>
             </div>
-        @endif
+        @endif  --}}
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input class="btn btn-success" type="submit" value="{{ $formMode === 'edit' ? 'Editar' : 'Agregar' }}">
     </div>
 </div>

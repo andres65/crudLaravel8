@@ -35,9 +35,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Nombre</th>
-										<th>Estado</th>
+										<th>Acciones</th>
 
                                         <th></th>
                                     </tr>
@@ -46,17 +45,16 @@
                                     @foreach ($tbRoles as $tbRole)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
 											<td>{{ $tbRole->nombre }}</td>
-											<td>{{ $tbRole->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('tb-roles.destroy',$tbRole->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-roles.show',$tbRole->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-roles.edit',$tbRole->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-roles.show',$tbRole->id) }}" title="Ver más información"><i class="fa fa-fw fa-eye"></i> </a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-roles.edit',$tbRole->id) }}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar el Rol {{ $tbRole->nombre }} ?');" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+                                                    {{--  <button type="submit" class="btn btn-danger btn-sm" title="Eliminar"><i class="fa fa-fw fa-trash"></i></button>  --}}
                                                 </form>
                                             </td>
                                         </tr>

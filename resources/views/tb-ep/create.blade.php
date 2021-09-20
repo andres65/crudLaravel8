@@ -13,13 +13,18 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear EPS</span>
+                        <div class="float-left">
+                            <span class="card-title"><strong>Crear EPS</strong></span>
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('tb-eps.index') }}"> Atrás</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('tb-eps.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('tb-ep.form')
+                            @include('tb-ep.form', ['formMode' => 'create'])
 
                         </form>
                     </div>

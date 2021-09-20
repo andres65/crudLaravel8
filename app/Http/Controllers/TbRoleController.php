@@ -116,6 +116,6 @@ class TbRoleController extends Controller
         $tbRole = TbRole::find($id)->delete();
 
         return redirect()->route('tb-roles.index')
-            ->with('success', 'TbRole deleted successfully');
+            ->with('success', 'Rol elimiando con éxito.');
     }
 }

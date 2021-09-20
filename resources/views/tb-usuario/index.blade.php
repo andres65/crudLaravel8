@@ -81,7 +81,7 @@
                                                     
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar el Usuario?');" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar el Usuario: {{ $tbUsuario->nombre }}?');" title="Eliminar"><i class="fa fa-trash-o"></i></button>
                                                     {{--  <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash" onclick="return confirm('Borrar?');"></i> Eliminar</button>  --}}
                                                 </form>
                                             </td>

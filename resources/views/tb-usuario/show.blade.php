@@ -41,16 +41,12 @@
                             {{ $tbUsuario->telefono }}
                         </div>
                         <div class="form-group">
-                            <strong>Eps Id:</strong>
-                            {{ $tbUsuario->eps_id }}
+                            <strong>EPS:</strong>
+                            {{ $nombreeps }}
                         </div>
                         <div class="form-group">
-                            <strong>Rol Id:</strong>
-                            {{ $tbUsuario->rol_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estado:</strong>
-                            {{ $tbUsuario->estado }}
+                            <strong>Rol:</strong>
+                            {{ $nombrerol }}
                         </div>
                         <div class="form-group">
                             <strong>Email:</strong>

@@ -13,13 +13,18 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Rol</span>
+                        <div class="float-left">
+                            <span class="card-title"><strong>Crear Rol</strong></span>
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('tb-roles.index') }}"> Atrás</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('tb-roles.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('tb-role.form')
+                            @include('tb-role.form', ['formMode' => 'create'])
 
                         </form>
                     </div>

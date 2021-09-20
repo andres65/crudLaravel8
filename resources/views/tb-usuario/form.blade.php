@@ -25,7 +25,7 @@
                     {{ Form::label('genero') }}
                     <select class="form-control" name="genero" id="genero">
                     @if(isset($genero))
-                        <option value="{{$tbUsuario->genero}}">{{$genero}}</option>
+                        <option disabled value="{{$tbUsuario->genero}}">{{$genero}}</option>
                         <option disabled>------------------</option>
                     @endif
                         <option value="M">Masculino</option>
