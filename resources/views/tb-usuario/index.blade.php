@@ -50,20 +50,16 @@
                                     @foreach ($tbUsuarios as $tbUsuario)
                                         
                                         @if($tbUsuario->calcularedad($tbUsuario->fecha_nacimiento) <= 17)
-                                        {{-- 4caf50  4c8c4a  --}}
                                             <tr bgcolor="#4caf50">
                                         @elseif ($tbUsuario->calcularedad($tbUsuario->fecha_nacimiento) >= 50)
                                             <tr bgcolor="#f05545">
                                         @else
                                            <tr>  
                                         @endif
-                                        
-                                        {{--  <tr bgcolor="{{ $color }}">  --}}
                                             
 											<td>{{ $tbUsuario->nombre }}</td>
 											<td>{{ $tbUsuario->documento }}</td>
 											<td>{{ $tbUsuario->genero }}</td>
-											{{--  <td>{{ $tbUsuario->fecha_nacimiento }}</td>  --}}
                                             <td>{{ $tbUsuario->calcularedad($tbUsuario->fecha_nacimiento) }}</td>
 											<td>{{ $tbUsuario->telefono }}</td>
                                             @foreach($eps as $item)
@@ -78,12 +74,15 @@
                                             @endforeach
 
                                             <td>
-                                                <form action="{{ route('tb-usuarios.destroy',$tbUsuario->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-usuarios.show',$tbUsuario->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-usuarios.edit',$tbUsuario->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form method="POST" action="{{ route('tb-usuarios.destroy',$tbUsuario->id) }}" >
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('tb-usuarios.show',$tbUsuario->id) }}" title="Ver más información"><i class="fa fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tb-usuarios.edit',$tbUsuario->id) }}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
+                                                    
+                                                    
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar el Usuario?');" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+                                                    {{--  <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash" onclick="return confirm('Borrar?');"></i> Eliminar</button>  --}}
                                                 </form>
                                             </td>
                                         </tr>

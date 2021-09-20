@@ -21,13 +21,16 @@ class TbUsuarioController extends Controller
      */
     public function index()
     {
-        $tbUsuarios = TbUsuario::paginate(10);
+        //$tbUsuarios = TbUsuario::paginate(10);
+        $tbUsuarios = DB::table('tb_usuarios')->where('estado', '=', 1)->get();
+        $perPage = 20;
+
         //datos eps y roles
         $eps = DB::table('tb_eps')->where('estado', '=', 1)->get();
         $roles = DB::table('tb_roles')->where('estado', '=', 1)->get();
 
         return view('tb-usuario.index', compact('tbUsuarios','eps','roles'))
-            ->with('i', (request()->input('page', 1) - 1) * $tbUsuarios->perPage());
+            ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     /**
@@ -179,10 +182,20 @@ class TbUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $tbUsuario = TbUsuario::find($id)->delete();
+        //$tbUsuario = TbUsuario::find($id)->delete();
+
+        $tbUsuario = ([ 'estado' => 0 ]);
+        $update = TbUsuario::where('id', '=', $id)->update($tbUsuario);
+        
+        if($update){
+            $usuario = TbUsuario::find($id);
+            $email = $usuario->email;
+            User::where('email', '=', $email)->delete();
+        }
 
         return redirect()->route('tb-usuarios.index')
-            ->with('success', 'TbUsuario deleted successfully');
+            ->with('success', 'Usuario Eliminado con éxito');
+
     }
 
 }
